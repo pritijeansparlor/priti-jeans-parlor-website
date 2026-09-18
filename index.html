@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Priti Jeans Parlor | Official Website</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0f0f0f;
+      color: white;
+    }
+
+    header {
+      background: #111;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #333;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #f5b700;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      color: #f5b700;
+    }
+
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      background:
+        radial-gradient(circle at top, #3a2900, #0f0f0f 55%);
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #f5b700;
+    }
+
+    .hero p {
+      color: #ccc;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+
+    .primary {
+      background: #f5b700;
+      color: #111;
+    }
+
+    .secondary {
+      background: transparent;
+      color: white;
+      border: 1px solid #f5b700;
+    }
+
+    section {
+      padding: 70px 6%;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    .title span {
+      color: #f5b700;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #1b1b1b;
+      padding: 30px 20px;
+      border-radius: 14px;
+      text-align: center;
+      border: 1px solid #292929;
+    }
+
+    .card h3 {
+      margin: 15px 0 10px;
+    }
+
+    .price {
+      color: #f5b700;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .icon {
+      font-size: 40px;
+    }
+
+    .booking {
+      max-width: 650px;
+      margin: auto;
+      background: #1b1b1b;
+      padding: 30px;
+      border-radius: 15px;
+    }
+
+    .booking input,
+    .booking select {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: #111;
+      color: white;
+      outline: none;
+    }
+
+    .booking button {
+      width: 100%;
+      padding: 15px;
+      background: #f5b700;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .product {
+      background: #1b1b1b;
+      padding: 20px;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .product-image {
+      height: 180px;
+      border-radius: 10px;
+      background: #292929;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 55px;
+      margin-bottom: 15px;
+    }
+
+    .product button {
+      margin-top: 15px;
+      padding: 11px 20px;
+      border: none;
+      border-radius: 7px;
+      background: #f5b700;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .contact {
+      text-align: center;
+      background: #151515;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #aaa;
+      background: #090909;
+    }
+
+    @media (max-width: 768px) {
+
+      header {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav a {
+        margin: 0 7px;
+        font-size: 13px;
+      }
+
+      .hero h1 {
+        font-size: 35px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .services,
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 55px 5%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      Priti <span>Jeans Parlor</span>
+    </div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#booking">Booking</a>
+      <a href="#products">Shop</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+
+  <section class="hero" id="home">
+    <div>
+      <h1>Welcome to <span>Priti Jeans Parlor</span></h1>
+
+      <p>
+        Style • Grooming • Confidence
+      </p>
+
+      <div class="buttons">
+        <a href="#booking" class="btn primary">
+          💈 Book Haircut
+        </a>
+
+        <a href="#products" class="btn secondary">
+          🛍️ Shop Products
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="services">
+
+    <h2 class="title">
+      Our <span>Services</span>
+    </h2>
+
+    <div class="services">
+
+      <div class="card">
+        <div class="icon">✂️</div>
+        <h3>Haircut</h3>
+        <p>Fresh & stylish haircut</p>
+        <br>
+        <div class="price">₹100</div>
+      </div>
+
+      <div class="card">
+        <div class="icon">💈</div>
+        <h3>Haircut + Beard</h3>
+        <p>Complete grooming service</p>
+        <br>
+        <div class="price">₹150</div>
+      </div>
+
+      <div class="card">
+        <div class="icon">✨</div>
+        <h3>Premium Styling</h3>
+        <p>Premium haircut & styling</p>
+        <br>
+        <div class="price">₹200</div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section id="booking">
+
+    <h2 class="title">
+      Book Your <span>Appointment</span>
+    </h2>
+
+    <div class="booking">
+
+      <input type="text" placeholder="Your Name">
+
+      <input type="tel" placeholder="Mobile Number">
+
+      <select>
+        <option>Select Service</option>
+        <option>Haircut - ₹100</option>
+        <option>Haircut + Beard - ₹150</option>
+        <option>Premium Styling - ₹200</option>
+      </select>
+
+      <input type="date">
+
+      <select>
+        <option>Select Time Slot</option>
+        <option>10:00 AM</option>
+        <option>11:00 AM</option>
+        <option>12:00 PM</option>
+        <option>1:00 PM</option>
+        <option>2:00 PM</option>
+        <option>3:00 PM</option>
+        <option>4:00 PM</option>
+        <option>5:00 PM</option>
+        <option>6:00 PM</option>
+        <option>7:00 PM</option>
+        <option>8:00 PM</option>
+      </select>
+
+      <button onclick="alert('Booking system will be connected in the next step!')">
+        Continue Booking
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <section id="products">
+
+    <h2 class="title">
+      Our <span>Products</span>
+    </h2>
+
+    <div class="products">
+
+      <div class="product">
+        <div class="product-image">🧴</div>
+        <h3>Hair Styling Product</h3>
+        <p>Premium grooming product</p>
+        <br>
+        <strong>₹199</strong>
+        <br>
+        <button>Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <div class="product-image">🧼</div>
+        <h3>Beard Care Product</h3>
+        <p>For smooth beard care</p>
+        <br>
+        <strong>₹249</strong>
+        <br>
+        <button>Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <div class="product-image">💇</div>
+        <h3>Hair Care Product</h3>
+        <p>Daily hair care</p>
+        <br>
+        <strong>₹299</strong>
+        <br>
+        <button>Add to Cart</button>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="contact" id="contact">
+
+    <h2 class="title">
+      Visit <span>Our Shop</span>
+    </h2>
+
+    <p>
+      📍 Your Shop Address
+    </p>
+
+    <br>
+
+    <p>
+      📞 Your Mobile Number
+    </p>
+
+    <br>
+
+    <a href="#" class="btn primary">
+      Contact Us
+    </a>
+
+  </section>
+
+
+  <footer>
+    © 2026 Priti Jeans Parlor. All Rights Reserved.
+  </footer>
+
+
+</body>
+</html>
