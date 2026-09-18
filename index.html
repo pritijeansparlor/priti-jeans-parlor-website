@@ -817,6 +817,7 @@
       }
     }
   }
+let currentSlipData = null;
 
   function processBooking() {
     const custName = document.getElementById('custName').value.trim();
@@ -853,6 +854,16 @@
 
     const slipNo = 'SLIP-' + Math.floor(100000 + Math.random() * 900000);
 
+    currentSlipData = {
+      custName,
+      custPhone,
+      bookingDate,
+      timeSlot,
+      rowsHtml,
+      grandTotal,
+      slipNo
+    };
+
     const waText = encodeURIComponent(
       `*🔔 नई स्लॉट बुकिंग (Priti Jeans Parlor)*\n\n` +
       `👤 *ग्राहक:* ${custName}\n` +
@@ -863,96 +874,105 @@
       `💰 *कुल बिल:* ₹${grandTotal}\n` +
       `📍 *भुगतान:* दुकान पर काउंटर देय\n` +
       `🏢 *पता:* पचमहला, मोकामा, पटना, बिहार (803303)\n` +
-      `🗺️ *मैप लोकेशन:* https://maps.app.goo.gl/xgg8F7sMU396mpKQ6?g_st=ac\n` +
+      `🗺️ *मैप:* https://maps.app.goo.gl/xgg8F7sMU396mpKQ6?g_st=ac\n` +
       `🧾 *स्लिप नं:* ${slipNo}`
     );
-    const waURL = `https://wa.me/919570830413?text=${waText}`;
-
-    const printWindow = window.open('', '_blank', 'width=520,height=720');
-    printWindow.document.write(`
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <title>Booking Slip - Priti Jeans Parlor</title>
-        <style>
-          body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #0f172a; padding: 25px; max-width: 440px; margin: auto; }
-          .receipt-head { text-align: center; border-bottom: 2px solid #0f172a; padding-bottom: 8px; }
-          .receipt-head h2 { margin: 0; font-size: 20px; }
-          .receipt-head p { margin: 2px 0 0 0; font-size: 11px; color: #475569; }
-          .slip-badge { display: inline-block; background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 4px; font-weight: bold; font-size: 11px; margin-top: 5px; }
-          .meta-table { width: 100%; margin-top: 12px; font-size: 12px; }
-          .table-items { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 13px; }
-          .table-items th { border-bottom: 1.5px solid #0f172a; padding: 6px 0; text-align: left; }
-          .grand-total-row td { border-top: 2px solid #0f172a; padding: 8px 0; font-size: 16px; font-weight: bold; }
-          .status-box { margin-top: 16px; border: 1px dashed #d97706; background: #fffbeb; padding: 10px; border-radius: 6px; font-size: 13px; }
-          .addr-box { margin-top: 10px; border-top: 1px dotted #cbd5e1; padding-top: 8px; font-size: 11px; color: #475569; }
-          .map-link-print { display: inline-block; margin-top: 6px; color: #0284c7; text-decoration: none; font-size: 11px; font-weight: bold; }
-          .foot-tag { text-align: center; font-size: 11px; color: #64748b; margin-top: 20px; border-top: 1px dotted #cbd5e1; padding-top: 8px; }
-        </style>
-      </head>
-      <body>
-        <div class="receipt-head">
-          <h2>Priti Jeans Parlor</h2>
-          <p>पचमहला, मोकामा, पटना, बिहार - 803303 | Call: +91 9570830413</p>
-          <div class="slip-badge">स्लॉट बुकिंग स्लिप (${slipNo})</div>
-        </div>
-
-        <table class="meta-table">
-          <tr><td><strong>नाम:</strong> ${custName}</td><td style="text-align:right;"><strong>तारीख:</strong> ${bookingDate}</td></tr>
-          <tr><td><strong>नंबर:</strong> ${custPhone}</td><td style="text-align:right;"><strong>स्लॉट:</strong> ${timeSlot}</td></tr>
-        </table>
-
-        <table class="table-items">
-          <thead>
-            <tr><th>बुक की गई सर्विस</th><th style="text-align:right;">अनुमानित रेट</th></tr>
-          </thead>
-          <tbody>
-            ${rowsHtml}
-            <tr class="grand-total-row">
-              <td>Total Payable</td>
-              <td style="text-align:right;">₹${grandTotal}</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="status-box">
-          <div style="color: #b45309; font-weight: bold; font-size: 13px;">● भुगतान स्थिति: पार्लर काउंटर पर देय (Pay at Counter)</div>
-          <div style="margin-top: 4px; color: #475569; font-size: 11px;">यह अग्रिम स्लॉट बुकिंग है। भुगतान सेवा लेने के बाद काउंटर पर कैश या UPI से करें।</div>
-          <div style="margin-top: 5px; font-weight: bold; color: #dc2626; font-size: 14px;">देय राशि: ₹${grandTotal}</div>
-        </div>
-
-        <div class="addr-box">
-          <strong>दुकान का पता:</strong> पचमहला, मोकामा, ज़िला - पटना, बिहार (803303)<br>
-          <a href="https://maps.app.goo.gl/xgg8F7sMU396mpKQ6?g_st=ac" class="map-link-print">📍 Google Maps पर लोकेशन खोलें</a>
-        </div>
-
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 20px;">
-          <div style="border: 2px dashed #0284c7; border-radius: 50%; width: 95px; height: 95px; display: flex; flex-direction: column; align-items: center; justify-content: center; transform: rotate(-5deg); color: #0284c7; text-align: center;">
-            <span style="font-size: 7px; font-weight: bold;">PRITI JEANS PARLOR</span>
-            <span style="font-size: 12px; font-weight: 900; margin: 2px 0;">SLOT BOOKED</span>
-            <span style="font-size: 7px;">MOKAMA</span>
-          </div>
-
-          <div style="text-align: right;">
-            <div style="font-family: 'Brush Script MT', cursive; font-size: 22px; color: #1e3a8a;">Badal Kumar</div>
-            <div style="border-top: 1px solid #334155; width: 120px; margin-left: auto;"></div>
-            <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Authorized Signatory</div>
-          </div>
-        </div>
-
-        <div class="foot-tag">✓ यह बुकिंग स्लिप पार्लर काउंटर पर दिखाएं | धन्यवाद!</div>
-
-        <script>
-          window.onload = function() { window.print(); };
-        <\/script>
-      </body>
-      </html>
-    `);
-    printWindow.document.close();
+    const waURL = `https://api.whatsapp.com/send?phone=919570830413&text=${waText}`;
 
     window.open(waURL, '_blank');
+
+    setTimeout(() => {
+      showPrintReceipt();
+    }, 1000);
   }
 
+  function showPrintReceipt() {
+    if (!currentSlipData) return;
+    const { custName, custPhone, bookingDate, timeSlot, rowsHtml, grandTotal, slipNo } = currentSlipData;
+
+    const printWindow = window.open('', '_blank', 'width=520,height=720');
+    if (printWindow) {
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Booking Slip - Priti Jeans Parlor</title>
+          <style>
+            body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #0f172a; padding: 25px; max-width: 440px; margin: auto; }
+            .receipt-head { text-align: center; border-bottom: 2px solid #0f172a; padding-bottom: 8px; }
+            .receipt-head h2 { margin: 0; font-size: 20px; }
+            .receipt-head p { margin: 2px 0 0 0; font-size: 11px; color: #475569; }
+            .slip-badge { display: inline-block; background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 4px; font-weight: bold; font-size: 11px; margin-top: 5px; }
+            .meta-table { width: 100%; margin-top: 12px; font-size: 12px; }
+            .table-items { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 13px; }
+            .table-items th { border-bottom: 1.5px solid #0f172a; padding: 6px 0; text-align: left; }
+            .grand-total-row td { border-top: 2px solid #0f172a; padding: 8px 0; font-size: 16px; font-weight: bold; }
+            .status-box { margin-top: 16px; border: 1px dashed #d97706; background: #fffbeb; padding: 10px; border-radius: 6px; font-size: 13px; }
+            .addr-box { margin-top: 10px; border-top: 1px dotted #cbd5e1; padding-top: 8px; font-size: 11px; color: #475569; }
+            .print-btn-action { display: block; width: 100%; text-align: center; background: #0f172a; color: #fff; padding: 10px; border-radius: 6px; font-weight: bold; font-size: 13px; margin-top: 15px; border: none; cursor: pointer; }
+            .foot-tag { text-align: center; font-size: 11px; color: #64748b; margin-top: 15px; border-top: 1px dotted #cbd5e1; padding-top: 8px; }
+          </style>
+        </head>
+        <body>
+          <div class="receipt-head">
+            <h2>Priti Jeans Parlor</h2>
+            <p>पचमहला, मोकामा, पटना, बिहार - 803303 | Call: +91 9570830413</p>
+            <div class="slip-badge">स्लॉट बुकिंग स्लिप (${slipNo})</div>
+          </div>
+
+          <table class="meta-table">
+            <tr><td><strong>नाम:</strong> ${custName}</td><td style="text-align:right;"><strong>तारीख:</strong> ${bookingDate}</td></tr>
+            <tr><td><strong>नंबर:</strong> ${custPhone}</td><td style="text-align:right;"><strong>स्लॉट:</strong> ${timeSlot}</td></tr>
+          </table>
+
+          <table class="table-items">
+            <thead>
+              <tr><th>बुक की गई सर्विस</th><th style="text-align:right;">रेट</th></tr>
+            </thead>
+            <tbody>
+              ${rowsHtml}
+              <tr class="grand-total-row">
+                <td>Total Payable</td>
+                <td style="text-align:right;">₹${grandTotal}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="status-box">
+            <div style="color: #b45309; font-weight: bold; font-size: 13px;">● भुगतान स्थिति: पार्लर काउंटर पर देय (Pay at Counter)</div>
+            <div style="margin-top: 4px; color: #475569; font-size: 11px;">भुगतान सेवा लेने के बाद दुकान काउंटर पर कैश या UPI से करें।</div>
+            <div style="margin-top: 5px; font-weight: bold; color: #dc2626; font-size: 14px;">देय राशि: ₹${grandTotal}</div>
+          </div>
+
+          <div class="addr-box">
+            <strong>दुकान का पता:</strong> पचमहला, मोकामा, ज़िला - पटना, बिहार (803303)<br>
+            <a href="https://maps.app.goo.gl/xgg8F7sMU396mpKQ6?g_st=ac" target="_blank" style="color: #0284c7; font-weight: bold;">📍 Google Maps पर लोकेशन खोलें</a>
+          </div>
+
+          <button class="print-btn-action" onclick="window.print()">🖨️ रसीद प्रिंट करें / PDF सेव करें</button>
+
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 20px;">
+            <div style="border: 2px dashed #0284c7; border-radius: 50%; width: 90px; height: 90px; display: flex; flex-direction: column; align-items: center; justify-content: center; transform: rotate(-5deg); color: #0284c7; text-align: center;">
+              <span style="font-size: 7px; font-weight: bold;">PRITI JEANS PARLOR</span>
+              <span style="font-size: 11px; font-weight: 900; margin: 2px 0;">SLOT BOOKED</span>
+              <span style="font-size: 7px;">MOKAMA</span>
+            </div>
+
+            <div style="text-align: right;">
+              <div style="font-family: 'Brush Script MT', cursive; font-size: 22px; color: #1e3a8a;">Badal Kumar</div>
+              <div style="border-top: 1px solid #334155; width: 120px; margin-left: auto;"></div>
+              <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Authorized Signatory</div>
+            </div>
+          </div>
+
+          <div class="foot-tag">✓ यह बुकिंग स्लिप पार्लर काउंटर पर दिखाएं | धन्यवाद!</div>
+        </body>
+        </html>
+      `);
+      printWindow.document.close();
+    }
+  }
+ 
   let selectedRatingStars = 5;
   const stars = document.querySelectorAll('#starContainer i');
   stars.forEach(star => {
