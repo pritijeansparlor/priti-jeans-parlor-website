@@ -381,10 +381,10 @@
       </p>
 
       <div class="contact-btn-group">
-        <a href="tel:7277998758" class="contact-btn btn-call">
-          📞 Call: 7277998758
+        <a href="tel:9570830413" class="contact-btn btn-call">
+          📞 Call: 9570830413
         </a>
-        <a href="https://wa.me/917277998758?text=Namaste%20Priti%20Jeans%20Parlor" class="contact-btn btn-whatsapp">
+        <a href="https://wa.me/919570830413?text=Namaste%20Priti%20Jeans%20Parlor" class="contact-btn btn-whatsapp">
           💬 WhatsApp
         </a>
       </div>
@@ -397,5 +397,185 @@
     <p style="margin-top: 4px; color: #50505c;">Style • Grooming • Confidence</p>
   </footer>
 
+  <!-- ================= BOOKING & BILL POPUP CODE START ================= -->
+<style>
+  .booking-modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); justify-content: center; align-items: center; }
+  .booking-modal-content { background: #161b26; color: #fff; padding: 22px; border-radius: 12px; width: 90%; max-width: 440px; max-height: 90vh; overflow-y: auto; border: 1px solid #333d52; }
+  .close-modal { float: right; font-size: 26px; cursor: pointer; color: #aaa; }
+  .input-group { margin-bottom: 12px; display: flex; flex-direction: column; text-align: left; }
+  .input-group label { font-size: 13px; margin-bottom: 5px; color: #d1d5db; }
+  .input-group input, .input-group select { padding: 9px; border-radius: 6px; border: 1px solid #3d4a63; background: #0f141e; color: #fff; }
+  .services-list { display: flex; flex-direction: column; gap: 8px; background: #0f141e; padding: 10px; border-radius: 8px; border: 1px solid #3d4a63; }
+  .service-option { display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer; }
+  .service-option input { width: 16px; height: 16px; accent-color: #ffcc00; }
+  .submit-btn { width: 100%; padding: 11px; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; margin-top: 5px; }
+  .bill-details { background: #0f141e; padding: 10px; border-radius: 6px; font-size: 13px; margin-bottom: 12px; border-left: 3px solid #ffcc00; text-align: left; }
+  .bill-table { width: 100%; border-collapse: collapse; margin-bottom: 12px; font-size: 13px; }
+  .bill-table th, .bill-table td { padding: 6px 8px; border-bottom: 1px solid #283347; text-align: left; }
+</style>
+
+<!-- 1. Booking Form Modal -->
+<div id="bookingModal" class="booking-modal">
+  <div class="booking-modal-content">
+    <span class="close-modal" onclick="closeBookingModal()">&times;</span>
+    <h3 style="color:#ffcc00; text-align:center; margin-top:0;">Book Appointment</h3>
+    <form id="appointmentForm" onsubmit="submitBooking(event)">
+      <div class="input-group">
+        <label>आपका नाम:</label>
+        <input type="text" id="custName" placeholder="नाम दर्ज करें" required>
+      </div>
+      <div class="input-group">
+        <label>मोबाइल नंबर:</label>
+        <input type="tel" id="custPhone" placeholder="मोबाइल नंबर" required>
+      </div>
+      <div class="input-group">
+        <label>सर्विस चुनें (एक या अधिक चुन सकते हैं):</label>
+        <div class="services-list">
+          <label class="service-option"><input type="checkbox" name="service" value="Normal Haircut" data-price="60" onchange="updateTotal()"> Normal Haircut (₹60)</label>
+          <label class="service-option"><input type="checkbox" name="service" value="Curly Hair / Perm" data-price="300" onchange="updateTotal()"> Curly Hair / Perm (₹300)</label>
+          <label class="service-option"><input type="checkbox" name="service" value="Clean Shave" data-price="40" onchange="updateTotal()"> Clean Shave (₹40)</label>
+          <label class="service-option"><input type="checkbox" name="service" value="Beard Trimming & Shaping" data-price="40" onchange="updateTotal()"> Beard Trimming & Shaping (₹40)</label>
+          <label class="service-option"><input type="checkbox" name="service" value="D-Tan Treatment" data-price="150" onchange="updateTotal()"> D-Tan Treatment (₹150)</label>
+          <label class="service-option"><input type="checkbox" name="service" value="Relaxing Head Massage" data-price="30" onchange="updateTotal()"> Relaxing Head Massage (₹30)</label>
+        </div>
+      </div>
+      <div class="input-group">
+        <label>तारीख:</label>
+        <input type="date" id="bookingDate" required>
+      </div>
+      <div class="input-group">
+        <label>टाइम स्लॉट:</label>
+        <select id="timeSlot" required>
+          <option value="">-- स्लॉट चुनें --</option>
+          <option value="09:00 AM - 10:00 AM">09:00 AM - 10:00 AM</option>
+          <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+          <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+          <option value="12:00 PM - 01:00 PM">12:00 PM - 01:00 PM</option>
+          <option value="02:00 PM - 03:00 PM">02:00 PM - 03:00 PM</option>
+          <option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
+          <option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
+          <option value="05:00 PM - 06:00 PM">05:00 PM - 06:00 PM</option>
+          <option value="06:00 PM - 07:00 PM">06:00 PM - 07:00 PM</option>
+        </select>
+      </div>
+      <div style="background:#252e42; padding:10px; border-radius:6px; text-align:center; color:#ffcc00; margin-bottom:10px;">
+        कुल राशि: <strong>₹<span id="totalDisplay">0</span></strong>
+      </div>
+      <button type="submit" class="submit-btn" style="background:#ffcc00; color:#000;">बिल देखें (Proceed to Bill)</button>
+    </form>
+  </div>
+</div>
+
+<!-- 2. Bill & Payment Modal -->
+<div id="billModal" class="booking-modal">
+  <div class="booking-modal-content">
+    <span class="close-modal" onclick="closeBillModal()">&times;</span>
+    <h3 style="color:#ffcc00; text-align:center; margin-bottom:2px;">Priti Jeans Parlor</h3>
+    <p style="text-align:center; font-size:12px; color:#aaa; margin-top:0;">Service Bill Receipt</p>
+    <div class="bill-details">
+      <div><strong>ग्राहक:</strong> <span id="billCustName"></span></div>
+      <div><strong>मोबाइल:</strong> <span id="billCustPhone"></span></div>
+      <div><strong>स्लॉट:</strong> <span id="billSlot"></span></div>
+    </div>
+    <table class="bill-table">
+      <thead><tr><th>सर्विस</th><th style="text-align:right;">रेट</th></tr></thead>
+      <tbody id="billItemsBody"></tbody>
+      <tfoot>
+        <tr style="border-top:2px solid #ffcc00; font-weight:bold;">
+          <td>Total</td><td style="text-align:right; color:#ffcc00;">₹<span id="finalBillAmount">0</span></td>
+        </tr>
+      </tfoot>
+    </table>
+    
+    <div id="qrContainer" style="text-align:center; margin:10px 0; display:none;">
+      <p style="font-size:11px; color:#ccc; margin-bottom:5px;">UPI ऐप से QR स्कैन करें:</p>
+      <img id="upiQrImage" src="" alt="QR" style="background:#fff; padding:5px; border-radius:6px; max-width:130px;">
+    </div>
+
+    <button id="onlinePayBtn" class="submit-btn" style="background:#28a745; color:#fff;">💳 ऑनलाइन पे करें ₹<span class="payAmtText">0</span></button>
+    <button id="cashPayBtn" class="submit-btn" style="background:#3d4a63; color:#ffcc00; border:1px solid #ffcc00;">💵 दुकान पर आकर कैश दें</button>
+    <button onclick="downloadReceipt()" class="submit-btn" style="background:#0284c7; color:#fff;">📄 रसीद डाउनलोड करें (PDF / Print)</button>
+  </div>
+</div>
+
+<script>
+  const PAPA_WHATSAPP = "919570830413";
+  const MY_UPI_ID = "9570830413@ybl";
+  const SHOP_NAME = "Priti Jeans Parlor";
+  let currentBooking = {};
+
+  function openBookingModal() { document.getElementById('bookingModal').style.display = 'flex'; }
+  function closeBookingModal() { document.getElementById('bookingModal').style.display = 'none'; }
+  function closeBillModal() { document.getElementById('billModal').style.display = 'none'; }
+
+  function updateTotal() {
+    let tot = 0;
+    document.querySelectorAll('input[name="service"]:checked').forEach(cb => { tot += parseInt(cb.getAttribute('data-price') || 0); });
+    document.getElementById('totalDisplay').innerText = tot;
+  }
+
+  function submitBooking(e) {
+    e.preventDefault();
+    const name = document.getElementById('custName').value.trim();
+    const phone = document.getElementById('custPhone').value.trim();
+    const date = document.getElementById('bookingDate').value;
+    const slot = document.getElementById('timeSlot').value;
+
+    const checked = [];
+    let total = 0;
+    const tbody = document.getElementById('billItemsBody');
+    tbody.innerHTML = '';
+
+    document.querySelectorAll('input[name="service"]:checked').forEach(cb => {
+      checked.push(cb.value);
+      const pr = parseInt(cb.getAttribute('data-price') || 0);
+      total += pr;
+      tbody.innerHTML += `<tr><td>${cb.value}</td><td style="text-align:right;">₹${pr}</td></tr>`;
+    });
+
+    if (checked.length === 0) { alert("कृपया कम से कम एक सर्विस चुनें!"); return; }
+
+    currentBooking = { name, phone, date, slot, services: checked.join(', '), total };
+    document.getElementById('billCustName').innerText = name;
+    document.getElementById('billCustPhone').innerText = phone;
+    document.getElementById('billSlot').innerText = `${date} | ${slot}`;
+    document.getElementById('finalBillAmount').innerText = total;
+    document.querySelectorAll('.payAmtText').forEach(el => el.innerText = total);
+
+    const upiUrl = `upi://pay?pa=${MY_UPI_ID}&pn=${encodeURIComponent(SHOP_NAME)}&am=${total}&cu=INR&tn=${encodeURIComponent('Haircut ' + name)}`;
+    document.getElementById('upiQrImage').src = `https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=${encodeURIComponent(upiUrl)}`;
+    document.getElementById('qrContainer').style.display = 'block';
+
+    document.getElementById('onlinePayBtn').onclick = function() {
+      window.location.href = upiUrl;
+      setTimeout(() => sendToPapa("Online Payment (UPI Initiated)"), 1500);
+    };
+    document.getElementById('cashPayBtn').onclick = function() {
+      sendToPapa("Cash on Service (दुकान पर देंगे)");
+    };
+
+    closeBookingModal();
+    document.getElementById('billModal').style.display = 'flex';
+  }
+
+  function sendToPapa(mode) {
+    const msg = `🔔 *नई बुकिंग (Priti Jeans Parlor)*\n\n` +
+                `👤 *ग्राहक:* ${currentBooking.name}\n` +
+                `📞 *नंबर:* ${currentBooking.phone}\n` +
+                `✂️ *काम:* ${currentBooking.services}\n` +
+                `📅 *तारीख:* ${currentBooking.date}\n` +
+                `⏰ *समय:* ${currentBooking.slot}\n` +
+                `💰 *बिल:* ₹${currentBooking.total}\n` +
+                `💵 *पेमेंट:* ${mode}`;
+    window.open(`https://wa.me/${PAPA_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+
+  function downloadReceipt() {
+    const w = window.open('', '', 'width=550,height=650');
+    w.document.write(`<html><head><title>Receipt</title><style>body{font-family:sans-serif;padding:20px;text-align:center;}table{width:100%;border-collapse:collapse;margin:15px 0;}th,td{border-bottom:1px solid #ddd;padding:6px;text-align:left;}</style></head><body><h2>Priti Jeans Parlor</h2><p>Call: +91 9570830413</p><hr><div style="text-align:left;"><p><b>नाम:</b> ${currentBooking.name}</p><p><b>नंबर:</b> ${currentBooking.phone}</p><p><b>स्लॉट:</b> ${currentBooking.date} (${currentBooking.slot})</p></div><table><tr><th>काम</th><th style="text-align:right;">रेट</th></tr>${document.getElementById('billItemsBody').innerHTML}<tr><th>Total</th><th style="text-align:right;">₹${currentBooking.total}</th></tr></table><p>✓ यह रसीद पार्लर पर दिखाएं</p><script>window.onload=function(){window.print();}<\/script></body></html>`);
+    w.document.close();
+  }
+</script>
+<!-- ================= BOOKING & BILL POPUP CODE END ================= -->
 </body>
 </html>
