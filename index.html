@@ -17,8 +17,6 @@
       color: #f1f5f9;
       line-height: 1.5;
     }
-
-    /* हेडर */
     header {
       background: #0d1322;
       border-bottom: 1px solid #1e293b;
@@ -58,32 +56,58 @@
       padding: 24px 16px;
     }
 
-    /* 1. बुकिंग कार्ड (सबसे ऊपर) */
-    .booking-card {
+    /* मुख्य वेलकम व बुक बटन */
+    .hero-banner {
       background: #131b2e;
       border: 1px solid #243352;
       border-radius: 14px;
-      padding: 24px;
-      margin-bottom: 35px;
+      padding: 30px 20px;
+      text-align: center;
+      margin-bottom: 25px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
-    .section-tag {
-      display: inline-block;
-      background: rgba(245, 158, 11, 0.15);
+    .hero-banner h2 {
       color: #f59e0b;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 20px;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      font-size: 26px;
+      margin-bottom: 6px;
     }
-    .card-title {
-      font-size: 22px;
+    .hero-banner p {
+      color: #94a3b8;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .toggle-book-btn {
+      background: #f59e0b;
+      color: #000;
+      font-size: 16px;
       font-weight: 700;
-      color: #f8fafc;
-      margin-bottom: 18px;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+      transition: 0.2s;
+    }
+    .toggle-book-btn:hover {
+      background: #d97706;
+    }
+
+    /* बुकिंग फॉर्म (शुरुआत में छुपा रहेगा) */
+    .booking-card {
+      display: none;
+      background: #131b2e;
+      border: 1px solid #f59e0b;
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 35px;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .form-grid {
@@ -115,19 +139,18 @@
       color: #fff;
       font-size: 14px;
       outline: none;
-      transition: border 0.2s;
     }
     input:focus, select:focus, textarea:focus {
       border-color: #f59e0b;
     }
 
-    /* बुकिंग में दिखने वाली रेट लिस्ट */
+    /* 10 सर्विसेज रेट लिस्ट */
     .services-box {
       background: #090d16;
       border: 1px solid #243352;
       border-radius: 10px;
       padding: 12px 14px;
-      max-height: 270px;
+      max-height: 280px;
       overflow-y: auto;
       margin-top: 4px;
     }
@@ -153,7 +176,6 @@
     .service-cost {
       color: #38bdf8;
       font-weight: 700;
-      font-size: 14px;
     }
 
     .total-banner {
@@ -166,56 +188,26 @@
       align-items: center;
       margin: 16px 0;
     }
-    .total-banner span {
-      font-weight: 600;
-      font-size: 15px;
-    }
     .total-val {
       font-size: 20px;
       font-weight: 800;
       color: #10b981;
     }
 
-    /* पेमेंट रेडियो बटन */
-    .payment-wrap {
-      background: #090d16;
-      border: 1px solid #243352;
-      border-radius: 10px;
-      padding: 14px;
-      margin-bottom: 18px;
-    }
-    .payment-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: #f59e0b;
-      margin-bottom: 10px;
-    }
-    .payment-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    @media (max-width: 500px) {
-      .payment-grid { grid-template-columns: 1fr; }
-    }
-    .pay-card {
-      border: 1px solid #334155;
-      padding: 12px;
+    .counter-pay-box {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px dashed #f59e0b;
       border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 18px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      cursor: pointer;
+      gap: 12px;
+    }
+    .counter-pay-box p {
       font-size: 13px;
-      transition: all 0.2s;
-    }
-    .pay-card:hover {
-      border-color: #f59e0b;
-      background: rgba(245, 158, 11, 0.05);
-    }
-    .pay-card input {
-      accent-color: #f59e0b;
-      cursor: pointer;
+      color: #cbd5e1;
+      margin: 0;
     }
 
     .action-btn {
@@ -229,74 +221,22 @@
       justify-content: center;
       align-items: center;
       gap: 8px;
-      transition: 0.2s;
-    }
-    .btn-locked {
-      background: #1e293b;
-      color: #64748b;
-      cursor: not-allowed;
-    }
-    .btn-ready {
-      background: #f59e0b;
-      color: #000;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+      background: #10b981;
+      color: #fff;
     }
-    .btn-ready:hover {
-      background: #d97706;
-    }
-
-    /* 2. सामने वाली सर्विस लिस्ट (बिना रेट के) */
-    .services-showcase {
-      background: #131b2e;
-      border: 1px solid #243352;
-      border-radius: 14px;
-      padding: 24px;
-      margin-bottom: 35px;
-    }
-    .service-catalog-item {
-      background: #090d16;
-      border: 1px solid #1e293b;
-      border-radius: 10px;
-      padding: 14px 16px;
-      margin-bottom: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: border 0.2s;
-    }
-    .service-catalog-item:hover {
-      border-color: #f59e0b;
-    }
-    .service-name-box {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 15px;
-      font-weight: 600;
-    }
-    .service-tag-badge {
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 20px;
-      background: rgba(56, 189, 248, 0.1);
-      color: #38bdf8;
-      border: 1px solid rgba(56, 189, 248, 0.3);
+    .action-btn:hover {
+      background: #059669;
     }
 
-    /* 3. फोटो लुकबुक */
+    /* फोटो गैलरी लुकबुक */
     .section-header {
       text-align: center;
-      margin-bottom: 22px;
+      margin: 30px 0 20px 0;
     }
     .section-header h3 {
       font-size: 22px;
       color: #f8fafc;
-    }
-    .section-header p {
-      font-size: 13px;
-      color: #94a3b8;
-      margin-top: 4px;
     }
     .photo-grid {
       display: grid;
@@ -309,29 +249,15 @@
       border: 1px solid #243352;
       border-radius: 12px;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
     }
     .photo-card img {
       width: 100%;
-      height: 250px;
+      height: 240px;
       object-fit: cover;
     }
     .photo-info {
       padding: 12px 14px;
     }
-    .photo-badge {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 4px;
-      margin-bottom: 6px;
-      text-transform: uppercase;
-    }
-    .badge-gold { background: #f59e0b; color: #000; }
-    .badge-blue { background: #0284c7; color: #fff; }
-    .badge-green { background: #10b981; color: #000; }
     .photo-info h4 {
       font-size: 15px;
       color: #f1f5f9;
@@ -342,7 +268,7 @@
       color: #94a3b8;
     }
 
-    /* 4. रिव्यू सेक्शन */
+    /* रिव्यू सेक्शन */
     .review-box {
       background: #131b2e;
       border: 1px solid #243352;
@@ -369,22 +295,11 @@
       border-radius: 6px;
       font-weight: 600;
       cursor: pointer;
-      margin-top: 10px;
-      transition: 0.2s;
-    }
-    .review-submit-btn:hover {
-      background: #1d4ed8;
     }
     .user-review-item {
       border-top: 1px solid #1e293b;
       padding: 12px 0;
       margin-top: 10px;
-    }
-    .user-review-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 4px;
     }
     .user-review-name {
       font-weight: 700;
@@ -415,8 +330,7 @@
 <header>
   <div class="brand-title">Priti Jeans Parlor</div>
   <div class="nav-links">
-    <a href="#booking-section"><i class="fa fa-calendar-check"></i> स्लॉट बुकिंग</a>
-    <a href="#services-list-section"><i class="fa fa-cut"></i> हमारे काम (Services)</a>
+    <a href="javascript:void(0)" onclick="openBooking()"><i class="fa fa-calendar-check"></i> स्लॉट बुकिंग</a>
     <a href="#lookbook-section"><i class="fa fa-images"></i> हेयर स्टाइल फोटो</a>
     <a href="#reviews-section"><i class="fa fa-star"></i> कस्टमर रिव्यू</a>
     <a href="tel:+919570830413"><i class="fa fa-phone"></i> 9570830413</a>
@@ -425,15 +339,23 @@
 
 <div class="container">
 
-  <!-- ================= 1. स्लॉट बुकिंग फॉर्म (रेट केवल यहीं दिखेगा) ================= -->
+  <!-- वेलकम बैनर व बुक बटन -->
+  <div class="hero-banner">
+    <h2>Welcome to Priti Jeans Parlor</h2>
+    <p>प्रीमियम हेयर कटिंग, कर्ली पर्म, बियर्ड शेपिंग और स्किन केयर</p>
+    <button class="toggle-book-btn" onclick="openBooking()">
+      <i class="fa fa-cut"></i> Book Haircut / अपना स्लॉट बुक करें
+    </button>
+  </div>
+
+  <!-- स्लॉट बुकिंग फॉर्म (बटन दबाने पर ही सामने आएगा) -->
   <section id="booking-section" class="booking-card">
     <div style="text-align: center; margin-bottom: 18px;">
-      <span class="section-tag">Instant Appointment</span>
-      <h2 class="card-title">✨ अपना स्लॉट बुक करें (Book Your Slot)</h2>
-      <p style="font-size: 13px; color: #94a3b8;">सर्विस चुनें और स्लॉट फाइनल करें (रेट यहीं सेलेक्ट करते समय दिखेगा)</p>
+      <h3 style="color: #f59e0b; font-size: 20px;">✨ स्लॉट बुकिंग फॉर्म</h3>
+      <p style="font-size: 13px; color: #94a3b8;">सर्विस चुनें और बुकिंग स्लिप निकालें (भुगतान सेवा के बाद काउंटर पर होगा)</p>
     </div>
 
-    <form id="bookingForm">
+    <form id="bookingForm" onsubmit="event.preventDefault(); processBooking();">
       <div class="form-grid">
         <div class="form-group">
           <label for="custName">आपका नाम: *</label>
@@ -441,35 +363,36 @@
         </div>
         <div class="form-group">
           <label for="custPhone">मोबाइल नंबर: *</label>
-          <input type="tel" id="custPhone" placeholder="10 अंकों का नंबर" required>
+          <input type="tel" id="custPhone" placeholder="10 अंकों का मोबाइल नंबर" required pattern="[0-9]{10}">
         </div>
       </div>
 
+      <!-- 10 सर्विसेज की पूरी लिस्ट -->
       <div class="form-group">
-        <label>सर्विस चुनें (रेट के साथ):</label>
+        <label>सर्विस चुनें (रेट के साथ): *</label>
         <div class="services-box">
           <label class="service-row">
-            <span><input type="checkbox" name="service" value="Normal Haircut" data-price="60" onchange="calcTotal()"> Normal Haircut</span>
+            <span><input type="checkbox" name="service" value="Hair Cutting" data-price="60" onchange="calcTotal()"> Hair Cutting</span>
             <span class="service-cost">₹60</span>
+          </label>
+          <label class="service-row">
+            <span><input type="checkbox" name="service" value="To shape a beard" data-price="40" onchange="calcTotal()"> To shape a beard</span>
+            <span class="service-cost">₹40</span>
+          </label>
+          <label class="service-row">
+            <span><input type="checkbox" name="service" value="Beard Clean (क्लीन शेव)" data-price="40" onchange="calcTotal()"> Beard Clean (क्लीन शेव)</span>
+            <span class="service-cost">₹40</span>
           </label>
           <label class="service-row">
             <span><input type="checkbox" name="service" value="Curly Hair / Perm" data-price="1500" onchange="calcTotal()"> Curly Hair / Perm</span>
             <span class="service-cost">₹1500</span>
           </label>
           <label class="service-row">
-            <span><input type="checkbox" name="service" value="Clean Shave" data-price="40" onchange="calcTotal()"> Clean Shave</span>
-            <span class="service-cost">₹40</span>
-          </label>
-          <label class="service-row">
-            <span><input type="checkbox" name="service" value="Beard Trimming & Shaping" data-price="40" onchange="calcTotal()"> Beard Trimming & Shaping</span>
-            <span class="service-cost">₹40</span>
-          </label>
-          <label class="service-row">
-            <span><input type="checkbox" name="service" value="Normal Face Scrub (फेस स्क्रब)" data-price="50" onchange="calcTotal()"> Normal Face Scrub (फेस स्क्रब)</span>
+            <span><input type="checkbox" name="service" value="Normal Face Scrub" data-price="50" onchange="calcTotal()"> Normal Face Scrub</span>
             <span class="service-cost">₹50</span>
           </label>
           <label class="service-row">
-            <span><input type="checkbox" name="service" value="Deep Clean Face Scrub (प्रीमियम स्क्रब)" data-price="100" onchange="calcTotal()"> Deep Clean Face Scrub (प्रीमियम स्क्रब)</span>
+            <span><input type="checkbox" name="service" value="Deep Clean Face Scrub (प्रीमियम)" data-price="100" onchange="calcTotal()"> Deep Clean Face Scrub (प्रीमियम)</span>
             <span class="service-cost">₹100</span>
           </label>
           <label class="service-row">
@@ -493,8 +416,8 @@
 
       <div class="form-grid">
         <div class="form-group">
-          <label for="bookingDate">तारीख: *</label>
-          <input type="date" id="bookingDate" required>
+          <label for="bookingDate">तारीख चुनें: *</label>
+          <input type="date" id="bookingDate" required onchange="refreshTimeSlots()">
         </div>
         <div class="form-group">
           <label for="timeSlot">टाइम स्लॉट: *</label>
@@ -513,124 +436,60 @@
       </div>
 
       <div class="total-banner">
-        <span>कुल राशि (Total Amount):</span>
+        <span>कुल देय राशि (Total Amount):</span>
         <span class="total-val" id="totalDisplay">₹0</span>
       </div>
 
-      <!-- पेमेंट ऑप्शन (बिना चुने प्रिंट बटन लॉक रहेगा) -->
-      <div class="payment-wrap">
-        <div class="payment-title"><i class="fa fa-wallet"></i> भुगतान का तरीका चुनें (Payment Option): *</div>
-        <div class="payment-grid">
-          <label class="pay-card">
-            <input type="radio" name="payType" value="ONLINE" onchange="checkState()">
-            <span>💳 ऑनलाइन भुगतान (Online Pay / UPI)</span>
-          </label>
-          <label class="pay-card">
-            <input type="radio" name="payType" value="CASH" onchange="checkState()">
-            <span>💵 दुकान पर नकद (Pay at Shop / Cash)</span>
-          </label>
-        </div>
+      <div class="counter-pay-box">
+        <i class="fa fa-store" style="font-size: 20px; color: #f59e0b;"></i>
+        <p><strong>काउंटर भुगतान:</strong> इस बुकिंग का भुगतान सेवा लेने के बाद दुकान पर काउंटर पर ही नकद या UPI द्वारा मान्य होगा।</p>
       </div>
 
-      <button type="button" id="submitReceiptBtn" class="action-btn btn-locked" disabled onclick="handleReceiptPrint()">
-        <i class="fa fa-print"></i> रसीद प्रिंट करें (Print Receipt)
+      <button type="submit" class="action-btn">
+        <i class="fa fa-check-circle"></i> स्लॉट बुक करें और रसीद पाएँ
       </button>
     </form>
   </section>
 
-  <!-- ================= 2. हमारे काम (Services Catalog - कोई रेट नहीं) ================= -->
-  <section id="services-list-section" class="services-showcase">
-    <div style="text-align: center; margin-bottom: 18px;">
-      <span class="section-tag">All Services</span>
-      <h3 style="font-size: 20px; color: #f8fafc;">हमारे यहाँ उपलब्ध सेवाएँ</h3>
-      <p style="font-size: 13px; color: #94a3b8;">प्रीमियम ग्रूमिंग और स्टाइलिंग के सभी काम किए जाते हैं</p>
-    </div>
-
-    <div class="service-catalog-item">
-      <div class="service-name-box"><i class="fa fa-cut" style="color: #f59e0b;"></i> Normal Haircut</div>
-      <span class="service-tag-badge">उपलब्ध है</span>
-    </div>
-
-    <div class="service-catalog-item">
-      <div class="service-name-box"><i class="fa fa-wind" style="color: #38bdf8;"></i> Trendy Curly Hair / Perm</div>
-      <span class="service-tag-badge">स्पेशल पर्म</span>
-    </div>
-
-    <div class="service-catalog-item">
-      <div class="service-name-box"><i class="fa fa-spa" style="color: #ec4899;"></i> Olivia Facial (ओलिविया फेशियल)</div>
-      <span class="service-tag-badge">प्रीमियम फेशियल</span>
-    </div>
-
-    <div class="service-catalog-item">
-      <div class="service-name-box"><i class="fa fa-sparkles" style="color: #eab308;"></i> Olivia Bleach (ओलिविया ब्लीच)</div>
-      <span class="service-tag-badge">ग्लोइंग ब्लीच</span>
-    </div>
-
-    <div class="service-catalog-item">
-      <div class="service-name-box"><i class="fa fa-shower" style="color: #06b6d4;"></i> Face Scrub (नॉर्मल व प्रीमियम डीप क्लीन)</div>
-      <span class="service-tag-badge">डीप क्लींजिंग</span>
-    </div>
-
-    <div class="service-catalog-item">
-      <div class="service-name-box"><i class="fa fa-sun" style="color: #f97316;"></i> D-Tan Skin Treatment</div>
-      <span class="service-tag-badge">टैन रिमूवल</span>
-    </div>
-
-    <div class="service-catalog-item">
-      <div class="service-name-box"><i class="fa fa-user-tie" style="color: #10b981;"></i> Clean Shave & Beard Shaping</div>
-      <span class="service-tag-badge">शार्प लाइनअप</span>
-    </div>
-
-    <div class="service-catalog-item">
-      <div class="service-name-box"><i class="fa fa-hand-holding-heart" style="color: #a855f7;"></i> Relaxing Head Massage</div>
-      <span class="service-tag-badge">रिलैक्सिंग मसाज</span>
-    </div>
-  </section>
-
-  <!-- ================= 3. फोटो लुकबुक ================= -->
+  <!-- फोटो लुकबुक -->
   <section id="lookbook-section">
     <div class="section-header">
-      <span class="section-tag">Lookbook</span>
       <h3>Real Transformations & Perm Looks</h3>
-      <p>हमारे द्वारा किए गए कर्ली हेयर और स्टाइलिंग फोटो</p>
+      <p style="color:#94a3b8; font-size:13px;">हमारे द्वारा किए गए कर्ली हेयर, ग्रूमिंग और बियर्ड स्टाइल</p>
     </div>
 
     <div class="photo-grid">
       <div class="photo-card">
         <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&auto=format&fit=crop&q=80" alt="Curly Perm">
         <div class="photo-info">
-          <span class="photo-badge badge-gold">Trending</span>
           <h4>Curly Perm & Drop Fade</h4>
-          <p>परफेक्ट कर्ली बाउंस और क्लीन स्किन फेड कट</p>
+          <p>परफेक्ट कर्ली बाउंस और क्लीन स्किन फेड</p>
         </div>
       </div>
 
       <div class="photo-card">
         <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&auto=format&fit=crop&q=80" alt="Textured Perm">
         <div class="photo-info">
-          <span class="photo-badge badge-blue">Most Popular</span>
           <h4>Textured Perm & Shape-up</h4>
-          <p>वॉल्यूम टेक्सचर कर्ल और शार्प बियर्ड लाइनिंग</p>
+          <p>शार्प बियर्ड लाइनिंग और वॉल्यूम कर्ल</p>
         </div>
       </div>
 
       <div class="photo-card">
         <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&auto=format&fit=crop&q=80" alt="Classic Grooming">
         <div class="photo-info">
-          <span class="photo-badge badge-green">Fresh Grooming</span>
           <h4>Classic Perm & Beard Blend</h4>
-          <p>सटीक बियर्ड कट और डी-टैन फ्रेशनेस लुक</p>
+          <p>सटीक बियर्ड कट और डी-टैन फ्रेशनेस</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= 4. कस्टमर रिव्यू सेक्शन ================= -->
+  <!-- रिव्यू सेक्शन -->
   <section id="reviews-section" class="review-box">
     <div style="text-align: center; margin-bottom: 20px;">
-      <span class="section-tag">Feedback</span>
-      <h3 style="font-size: 20px; color: #f8fafc;">ग्राहक समीक्षा व रेटिंग (Customer Reviews)</h3>
-      <p style="font-size: 13px; color: #94a3b8;">आपको हमारी सेवा कैसी लगी? अपना अनुभव और रेटिंग यहाँ शेयर करें!</p>
+      <h3 style="font-size: 20px; color: #f8fafc;">ग्राहक समीक्षा व रेटिंग</h3>
+      <p style="font-size: 13px; color: #94a3b8;">आपको हमारा काम कैसा लगा? अपना अनुभव यहाँ शेयर करें!</p>
     </div>
 
     <div style="background: #090d16; padding: 18px; border-radius: 10px; border: 1px solid #243352;">
@@ -649,8 +508,8 @@
       </div>
 
       <div class="form-group">
-        <label for="revComment">आपका अनुभव / फीडबैक:</label>
-        <textarea id="revComment" rows="3" placeholder="आपको हेयरकट, फेशियल, स्क्रब या सर्विस कैसी लगी..."></textarea>
+        <label for="revComment">आपका अनुभव:</label>
+        <textarea id="revComment" rows="3" placeholder="हेयरकट, फेशियल या सर्विस का अनुभव..."></textarea>
       </div>
 
       <button type="button" class="review-submit-btn" onclick="submitUserReview()">
@@ -659,22 +518,13 @@
     </div>
 
     <div style="margin-top: 25px;" id="reviewsDisplayArea">
-      <h4 style="font-size: 15px; color: #f59e0b; margin-bottom: 10px;">हालिया ग्राहक समीक्षाएं:</h4>
-      
+      <h4 style="font-size: 15px; color: #f59e0b; margin-bottom: 10px;">ग्राहकों की समीक्षाएं:</h4>
       <div class="user-review-item">
-        <div class="user-review-header">
+        <div style="display:flex; justify-content:space-between;">
           <span class="user-review-name">राहुल कुमार</span>
           <span class="user-review-stars">★★★★★</span>
         </div>
-        <p class="user-review-text">कर्ली हेयर पर्म बहुत ही शानदार हुआ। मोकामा में ऐसा काम कहीं नहीं होता!</p>
-      </div>
-
-      <div class="user-review-item">
-        <div class="user-review-header">
-          <span class="user-review-name">अमन राज</span>
-          <span class="user-review-stars">★★★★★</span>
-        </div>
-        <p class="user-review-text">ओलिविया फेशियल और स्क्रब कराने के बाद चेहरा एकदम फ्रेश हो गया। बहुत बढ़िया सर्विस!</p>
+        <p class="user-review-text">कर्ली हेयर पर्म बहुत ही शानदार हुआ। मोकामा में सबसे बेस्ट पार्लर!</p>
       </div>
     </div>
   </section>
@@ -682,12 +532,21 @@
 </div>
 
 <footer>
-  <p>© 2026 Priti Jeans Parlor. All Rights Reserved. | Designed for Badal Kumar</p>
+  <p>© 2026 Priti Jeans Parlor. All Rights Reserved. | Mokama, Bihar</p>
 </footer>
 
 <script>
   document.getElementById('bookingDate').valueAsDate = new Date();
 
+  // स्लॉट बुकिंग फॉर्म खोलना
+  function openBooking() {
+    const box = document.getElementById('booking-section');
+    box.style.display = 'block';
+    box.scrollIntoView({ behavior: 'smooth' });
+    refreshTimeSlots();
+  }
+
+  // कुल राशि कैलकुलेट करना
   function calcTotal() {
     const checkedBoxes = document.querySelectorAll('input[name="service"]:checked');
     let total = 0;
@@ -695,103 +554,97 @@
       total += parseInt(cb.getAttribute('data-price') || 0);
     });
     document.getElementById('totalDisplay').innerText = '₹' + total;
-    checkState();
   }
 
-  function checkState() {
-    const paymentSelected = document.querySelector('input[name="payType"]:checked');
-    const servicesSelected = document.querySelectorAll('input[name="service"]:checked');
-    const printBtn = document.getElementById('submitReceiptBtn');
+  // एक स्लॉट = एक ही व्यक्ति (बुक स्लॉट को लॉक करना)
+  function refreshTimeSlots() {
+    const selectedDate = document.getElementById('bookingDate').value;
+    const bookedSlots = JSON.parse(localStorage.getItem('booked_slots_' + selectedDate) || '[]');
+    const select = document.getElementById('timeSlot');
 
-    if (paymentSelected && servicesSelected.length > 0) {
-      printBtn.disabled = false;
-      printBtn.className = 'action-btn btn-ready';
-    } else {
-      printBtn.disabled = true;
-      printBtn.className = 'action-btn btn-locked';
+    for (let i = 0; i < select.options.length; i++) {
+      const opt = select.options[i];
+      if (!opt.value) continue;
+
+      if (bookedSlots.includes(opt.value)) {
+        opt.disabled = true;
+        opt.innerText = opt.value + ' (पहले से बुक है ❌)';
+      } else {
+        opt.disabled = false;
+        opt.innerText = opt.value;
+      }
     }
   }
 
-  function handleReceiptPrint() {
-    const custName = document.getElementById('custName').value.trim() || 'ग्राहक';
-    const custPhone = document.getElementById('custPhone').value.trim() || 'N/A';
-    const bookingDate = document.getElementById('bookingDate').value || new Date().toISOString().split('T')[0];
-    const timeSlot = document.getElementById('timeSlot').value || 'जनरल स्लॉट';
-    const payMode = document.querySelector('input[name="payType"]:checked').value;
+  // बुकिंग प्रक्रिया: WhatsApp अलर्ट + रसीद प्रिंट + स्लॉट लॉक
+  function processBooking() {
+    const custName = document.getElementById('custName').value.trim();
+    const custPhone = document.getElementById('custPhone').value.trim();
+    const bookingDate = document.getElementById('bookingDate').value;
+    const timeSlot = document.getElementById('timeSlot').value;
 
     const checkedBoxes = document.querySelectorAll('input[name="service"]:checked');
-    let rowsHtml = '';
+    if (checkedBoxes.length === 0) {
+      alert('कृपया कम से कम एक सर्विस ज़रूर चुनें!');
+      return;
+    }
+
+    let bookedServices = [];
     let grandTotal = 0;
+    let rowsHtml = '';
 
     checkedBoxes.forEach(item => {
       const price = parseInt(item.getAttribute('data-price'));
       grandTotal += price;
+      bookedServices.push(item.value + ' (₹' + price + ')');
       rowsHtml += `
         <tr style="border-bottom: 1px solid #e2e8f0;">
-          <td style="padding: 8px 0; color: #1e293b;">${item.value}</td>
-          <td style="padding: 8px 0; text-align: right; font-weight: 600;">₹${price}</td>
+          <td style="padding: 8px 0;">${item.value}</td>
+          <td style="padding: 8px 0; text-align: right; font-weight: bold;">₹${price}</td>
         </tr>
       `;
     });
 
-    const now = new Date();
-    const timeString = now.toLocaleDateString('en-GB') + ' ' + now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-    const txnCode = 'TXN' + Math.floor(10000000 + Math.random() * 90000000);
+    // स्लॉट को उस तारीख के लिए लॉक कर दें
+    let bookedSlots = JSON.parse(localStorage.getItem('booked_slots_' + bookingDate) || '[]');
+    bookedSlots.push(timeSlot);
+    localStorage.setItem('booked_slots_' + bookingDate, JSON.stringify(bookedSlots));
+    refreshTimeSlots();
 
-    let paymentBlockHtml = '';
-    if (payMode === 'ONLINE') {
-      paymentBlockHtml = `
-        <div style="margin-top: 15px; border-top: 1px dashed #cbd5e1; padding-top: 10px; font-size: 13px;">
-          <div><strong>भुगतान स्थिति:</strong> <span style="color: #16a34a; font-weight: bold;">● ऑनलाइन भुगतान सफल (PAID)</span></div>
-          <div><strong>माध्यम:</strong> UPI / Mobile App</div>
-          <div><strong>Txn ID:</strong> ${txnCode}</div>
-          <div><strong>समय:</strong> ${timeString}</div>
-        </div>
+    const slipNo = 'SLIP-' + Math.floor(100000 + Math.random() * 900000);
 
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 25px;">
-          <div style="border: 2.5px dashed #16a34a; border-radius: 50%; width: 105px; height: 105px; display: flex; flex-direction: column; align-items: center; justify-content: center; transform: rotate(-8deg); color: #16a34a; text-align: center;">
-            <span style="font-size: 8px; font-weight: bold;">PRITI JEANS PARLOR</span>
-            <span style="font-size: 16px; font-weight: 900; margin: 2px 0;">✓ PAID</span>
-            <span style="font-size: 7px; font-weight: bold;">VERIFIED ONLINE</span>
-          </div>
+    // 1. WhatsApp पर मैसेज भेजना
+    const waText = encodeURIComponent(
+      `*🔔 नई स्लॉट बुकिंग (Priti Jeans Parlor)*\n\n` +
+      `👤 *ग्राहक:* ${custName}\n` +
+      `📞 *मोबाइल:* ${custPhone}\n` +
+      `📅 *तारीख:* ${bookingDate}\n` +
+      `⏰ *स्लॉट:* ${timeSlot}\n\n` +
+      `✂️ *सर्विस:* \n- ${bookedServices.join('\n- ')}\n\n` +
+      `💰 *कुल बिल:* ₹${grandTotal}\n` +
+      `📍 *भुगतान:* दुकान पर काउंटर देय\n` +
+      `🧾 *स्लिप नं:* ${slipNo}`
+    );
+    const waURL = `https://wa.me/919570830413?text=${waText}`;
 
-          <div style="text-align: right;">
-            <div style="font-family: 'Brush Script MT', cursive; font-size: 24px; color: #1e3a8a; font-weight: bold;">Badal Kumar</div>
-            <div style="border-top: 1.5px solid #0f172a; width: 130px; margin-left: auto;"></div>
-            <div style="font-size: 11px; font-weight: bold; margin-top: 2px;">Authorized Signatory</div>
-            <div style="font-size: 9px; color: #64748b;">Priti Jeans Parlor</div>
-          </div>
-        </div>
-      `;
-    } else {
-      paymentBlockHtml = `
-        <div style="margin-top: 15px; border-top: 1px dashed #cbd5e1; padding: 10px; background: #fffbeb; border-radius: 6px; font-size: 13px;">
-          <div style="color: #b45309; font-weight: bold;">● भुगतान स्थिति: दुकान पर नकद देय (Pay at Shop / Cash)</div>
-          <div style="margin-top: 4px; color: #dc2626; font-weight: bold;">बाकी राशि (Due Amount): ₹${grandTotal} (सेवा के बाद काउंटर पर दें)</div>
-        </div>
-        <div style="text-align: right; margin-top: 25px;">
-          <div style="font-family: 'Brush Script MT', cursive; font-size: 22px; color: #1e3a8a;">Badal Kumar</div>
-          <div style="border-top: 1px solid #334155; width: 120px; margin-left: auto;"></div>
-          <div style="font-size: 11px; color: #64748b;">Priti Jeans Parlor</div>
-        </div>
-      `;
-    }
-
+    // 2. ग्राहक के लिए पक्की रसीद खोलना
     const printWindow = window.open('', '_blank', 'width=520,height=680');
     printWindow.document.write(`
       <!DOCTYPE html>
       <html>
       <head>
-        <title>Receipt - Priti Jeans Parlor</title>
+        <title>Booking Slip - Priti Jeans Parlor</title>
         <style>
           body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #0f172a; padding: 25px; max-width: 440px; margin: auto; }
           .receipt-head { text-align: center; border-bottom: 2px solid #0f172a; padding-bottom: 8px; }
           .receipt-head h2 { margin: 0; font-size: 20px; }
           .receipt-head p { margin: 3px 0 0 0; font-size: 12px; color: #475569; }
+          .slip-badge { display: inline-block; background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 4px; font-weight: bold; font-size: 11px; margin-top: 5px; }
           .meta-table { width: 100%; margin-top: 12px; font-size: 12px; }
           .table-items { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 13px; }
           .table-items th { border-bottom: 1.5px solid #0f172a; padding: 6px 0; text-align: left; }
           .grand-total-row td { border-top: 2px solid #0f172a; padding: 8px 0; font-size: 16px; font-weight: bold; }
+          .status-box { margin-top: 16px; border: 1px dashed #d97706; background: #fffbeb; padding: 10px; border-radius: 6px; font-size: 13px; }
           .foot-tag { text-align: center; font-size: 11px; color: #64748b; margin-top: 25px; border-top: 1px dotted #cbd5e1; padding-top: 8px; }
         </style>
       </head>
@@ -799,6 +652,7 @@
         <div class="receipt-head">
           <h2>Priti Jeans Parlor</h2>
           <p>Call: +91 9570830413 | Mokama, Bihar</p>
+          <div class="slip-badge">स्लॉट बुकिंग स्लिप (${slipNo})</div>
         </div>
 
         <table class="meta-table">
@@ -808,20 +662,38 @@
 
         <table class="table-items">
           <thead>
-            <tr><th>सर्विस</th><th style="text-align:right;">रेट</th></tr>
+            <tr><th>बुक की गई सर्विस</th><th style="text-align:right;">अनुमानित रेट</th></tr>
           </thead>
           <tbody>
             ${rowsHtml}
             <tr class="grand-total-row">
-              <td>Total</td>
+              <td>Total Payable</td>
               <td style="text-align:right;">₹${grandTotal}</td>
             </tr>
           </tbody>
         </table>
 
-        ${paymentBlockHtml}
+        <div class="status-box">
+          <div style="color: #b45309; font-weight: bold; font-size: 14px;">● भुगतान स्थिति: पार्लर काउंटर पर देय (Pay at Counter)</div>
+          <div style="margin-top: 4px; color: #475569; font-size: 12px;">यह अग्रिम स्लॉट बुकिंग है। भुगतान सेवा लेने के बाद काउंटर पर कैश या UPI से करें।</div>
+          <div style="margin-top: 6px; font-weight: bold; color: #dc2626; font-size: 14px;">देय राशि: ₹${grandTotal}</div>
+        </div>
 
-        <div class="foot-tag">✓ यह रसीद पार्लर पर दिखाएं | धन्यवाद!</div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 25px;">
+          <div style="border: 2px dashed #0284c7; border-radius: 50%; width: 100px; height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; transform: rotate(-5deg); color: #0284c7; text-align: center;">
+            <span style="font-size: 8px; font-weight: bold;">PRITI JEANS PARLOR</span>
+            <span style="font-size: 13px; font-weight: 900; margin: 2px 0;">SLOT BOOKED</span>
+            <span style="font-size: 7px;">MOKAMA</span>
+          </div>
+
+          <div style="text-align: right;">
+            <div style="font-family: 'Brush Script MT', cursive; font-size: 22px; color: #1e3a8a;">Badal Kumar</div>
+            <div style="border-top: 1px solid #334155; width: 120px; margin-left: auto;"></div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Authorized Signatory</div>
+          </div>
+        </div>
+
+        <div class="foot-tag">✓ यह बुकिंग स्लिप पार्लर काउंटर पर दिखाएं | धन्यवाद!</div>
 
         <script>
           window.onload = function() { window.print(); };
@@ -830,8 +702,12 @@
       </html>
     `);
     printWindow.document.close();
+
+    // WhatsApp अलर्ट के लिए रीडायरेक्ट
+    window.open(waURL, '_blank');
   }
 
+  // रेटिंग स्टार
   let selectedRatingStars = 5;
   const stars = document.querySelectorAll('#starContainer i');
   stars.forEach(star => {
@@ -852,16 +728,15 @@
     const comment = document.getElementById('revComment').value.trim();
 
     if (!comment) {
-      alert('कृपया अपना रिव्यू/अनुभव लिखें!');
+      alert('कृपया अपना रिव्यू लिखें!');
       return;
     }
 
     let starStr = '★'.repeat(selectedRatingStars) + '☆'.repeat(5 - selectedRatingStars);
-
     const reviewItem = document.createElement('div');
     reviewItem.className = 'user-review-item';
     reviewItem.innerHTML = `
-      <div class="user-review-header">
+      <div style="display:flex; justify-content:space-between;">
         <span class="user-review-name">${name}</span>
         <span class="user-review-stars">${starStr}</span>
       </div>
@@ -870,7 +745,7 @@
 
     document.getElementById('reviewsDisplayArea').prepend(reviewItem);
     document.getElementById('revComment').value = '';
-    alert('धन्यवाद! आपका रिव्यू सफलतापूर्वक जुड़ गया है।');
+    alert('धन्यवाद! आपका रिव्यू जुड़ गया है।');
   }
 </script>
 
