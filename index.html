@@ -56,7 +56,6 @@
       padding: 24px 16px;
     }
 
-    /* मुख्य वेलकम व बुक बटन */
     .hero-banner {
       background: #131b2e;
       border: 1px solid #243352;
@@ -74,7 +73,7 @@
     .hero-banner p {
       color: #94a3b8;
       font-size: 14px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
     .toggle-book-btn {
       background: #f59e0b;
@@ -95,7 +94,41 @@
       background: #d97706;
     }
 
-    /* बुकिंग फॉर्म (शुरुआत में छुपा रहेगा) */
+    .insta-badge-wrap {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .insta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(220, 39, 67, 0.3);
+    }
+    .map-top-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0284c7;
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+    }
+
+    /* बुकिंग फॉर्म */
     .booking-card {
       display: none;
       background: #131b2e;
@@ -144,7 +177,6 @@
       border-color: #f59e0b;
     }
 
-    /* 10 सर्विसेज रेट लिस्ट */
     .services-box {
       background: #090d16;
       border: 1px solid #243352;
@@ -229,10 +261,22 @@
       background: #059669;
     }
 
-    /* फोटो गैलरी लुकबुक */
+    /* लुकबुक */
     .section-header {
       text-align: center;
-      margin: 30px 0 20px 0;
+      margin: 35px 0 20px 0;
+    }
+    .section-tag {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.15);
+      color: #f59e0b;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     .section-header h3 {
       font-size: 22px;
@@ -242,22 +286,38 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 16px;
-      margin-bottom: 40px;
+      margin-bottom: 25px;
     }
     .photo-card {
       background: #131b2e;
       border: 1px solid #243352;
       border-radius: 12px;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
     .photo-card img {
       width: 100%;
-      height: 240px;
+      height: 270px;
       object-fit: cover;
+      display: block;
+      background: #0d1322;
     }
     .photo-info {
       padding: 12px 14px;
     }
+    .photo-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .badge-gold { background: #f59e0b; color: #000; }
+    .badge-blue { background: #0284c7; color: #fff; }
+    .badge-green { background: #10b981; color: #000; }
     .photo-info h4 {
       font-size: 15px;
       color: #f1f5f9;
@@ -268,7 +328,25 @@
       color: #94a3b8;
     }
 
-    /* रिव्यू सेक्शन */
+    .insta-footer-banner {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .insta-footer-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(90deg, #f59e0b, #ea580c);
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 10px 22px;
+      border-radius: 25px;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
+    }
+
+    /* रिव्यू व फोटो अपलोड */
     .review-box {
       background: #131b2e;
       border: 1px solid #243352;
@@ -287,6 +365,16 @@
     .star-rating .fa-star.active {
       color: #f59e0b;
     }
+    .photo-upload-input {
+      background: #090d16;
+      border: 1px dashed #38bdf8;
+      border-radius: 8px;
+      padding: 12px;
+      width: 100%;
+      color: #cbd5e1;
+      font-size: 13px;
+      cursor: pointer;
+    }
     .review-submit-btn {
       background: #2563eb;
       color: white;
@@ -295,11 +383,13 @@
       border-radius: 6px;
       font-weight: 600;
       cursor: pointer;
+      margin-top: 10px;
     }
+
     .user-review-item {
       border-top: 1px solid #1e293b;
-      padding: 12px 0;
-      margin-top: 10px;
+      padding: 14px 0;
+      margin-top: 12px;
     }
     .user-review-name {
       font-weight: 700;
@@ -313,15 +403,85 @@
     .user-review-text {
       font-size: 13px;
       color: #cbd5e1;
+      margin: 4px 0;
+    }
+    .user-review-img {
+      max-width: 180px;
+      max-height: 180px;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-top: 8px;
+      border: 1px solid #334155;
+      display: block;
     }
 
+    /* फ़ूटर व गूगल मैप कार्ड */
     footer {
+      background: #070b12;
+      border-top: 1px solid #1e293b;
+      padding: 35px 20px 20px 20px;
       text-align: center;
-      padding: 25px;
+    }
+    .address-card {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      max-width: 480px;
+      margin: 0 auto 25px auto;
+      padding: 20px;
+      text-align: left;
+    }
+    .address-card h4 {
+      color: #f59e0b;
+      font-size: 16px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #1f2937;
+      padding-bottom: 8px;
+    }
+    .address-line {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 13px;
+      border-bottom: 1px dashed #1e293b;
+    }
+    .address-line:last-child {
+      border-bottom: none;
+    }
+    .addr-label {
+      color: #94a3b8;
+      font-weight: 600;
+    }
+    .addr-val {
+      color: #f1f5f9;
+      font-weight: 700;
+      text-align: right;
+    }
+    .map-btn-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #16a34a;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-top: 14px;
+      transition: 0.2s;
+    }
+    .map-btn-link:hover {
+      background: #15803d;
+    }
+    .copyright-text {
       color: #64748b;
       font-size: 12px;
-      border-top: 1px solid #1e293b;
-      background: #090d16;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -333,22 +493,32 @@
     <a href="javascript:void(0)" onclick="openBooking()"><i class="fa fa-calendar-check"></i> स्लॉट बुकिंग</a>
     <a href="#lookbook-section"><i class="fa fa-images"></i> हेयर स्टाइल फोटो</a>
     <a href="#reviews-section"><i class="fa fa-star"></i> कस्टमर रिव्यू</a>
+    <a href="https://maps.app.goo.gl/xgg8F7sMU396mpKQ6?g_st=ac" target="_blank"><i class="fa fa-map-marker-alt"></i> लोकेशन (Map)</a>
+    <a href="https://instagram.com/priti_jents_parlor" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
     <a href="tel:+919570830413"><i class="fa fa-phone"></i> 9570830413</a>
   </div>
 </header>
 
 <div class="container">
 
-  <!-- वेलकम बैनर व बुक बटन -->
+  <!-- वेलकम बैनर -->
   <div class="hero-banner">
     <h2>Welcome to Priti Jeans Parlor</h2>
-    <p>प्रीमियम हेयर कटिंग, कर्ली पर्म, बियर्ड शेपिंग और स्किन केयर</p>
+    <p>Style • Grooming • Confidence | Pachmahla, Mokama</p>
     <button class="toggle-book-btn" onclick="openBooking()">
       <i class="fa fa-cut"></i> Book Haircut / अपना स्लॉट बुक करें
     </button>
+    <div class="insta-badge-wrap">
+      <a href="https://instagram.com/priti_jents_parlor" target="_blank" class="insta-link">
+        <i class="fab fa-instagram"></i> Instagram: @priti_jents_parlor
+      </a>
+      <a href="https://maps.app.goo.gl/xgg8F7sMU396mpKQ6?g_st=ac" target="_blank" class="map-top-btn">
+        <i class="fa fa-map-marked-alt"></i> Google Maps लोकेशन
+      </a>
+    </div>
   </div>
 
-  <!-- स्लॉट बुकिंग फॉर्म (बटन दबाने पर ही सामने आएगा) -->
+  <!-- स्लॉट बुकिंग फॉर्म -->
   <section id="booking-section" class="booking-card">
     <div style="text-align: center; margin-bottom: 18px;">
       <h3 style="color: #f59e0b; font-size: 20px;">✨ स्लॉट बुकिंग फॉर्म</h3>
@@ -367,7 +537,7 @@
         </div>
       </div>
 
-      <!-- 10 सर्विसेज की पूरी लिस्ट -->
+      <!-- 10 सर्विसेज लिस्ट -->
       <div class="form-group">
         <label>सर्विस चुनें (रेट के साथ): *</label>
         <div class="services-box">
@@ -423,14 +593,14 @@
           <label for="timeSlot">टाइम स्लॉट: *</label>
           <select id="timeSlot" required>
             <option value="">-- स्लॉट चुनें --</option>
-            <option value="09:00 AM - 10:00 AM">09:00 AM - 10:00 AM</option>
-            <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-            <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
-            <option value="12:00 PM - 01:00 PM">12:00 PM - 01:00 PM</option>
-            <option value="02:00 PM - 03:00 PM">02:00 PM - 03:00 PM</option>
-            <option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
-            <option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
-            <option value="05:00 PM - 06:00 PM">05:00 PM - 06:00 PM</option>
+            <option value="09:00 AM - 10:00 AM" data-end-hour="10">09:00 AM - 10:00 AM</option>
+            <option value="10:00 AM - 11:00 AM" data-end-hour="11">10:00 AM - 11:00 AM</option>
+            <option value="11:00 AM - 12:00 PM" data-end-hour="12">11:00 AM - 12:00 PM</option>
+            <option value="12:00 PM - 01:00 PM" data-end-hour="13">12:00 PM - 01:00 PM</option>
+            <option value="02:00 PM - 03:00 PM" data-end-hour="15">02:00 PM - 03:00 PM</option>
+            <option value="03:00 PM - 04:00 PM" data-end-hour="16">03:00 PM - 04:00 PM</option>
+            <option value="04:00 PM - 05:00 PM" data-end-hour="17">04:00 PM - 05:00 PM</option>
+            <option value="05:00 PM - 06:00 PM" data-end-hour="18">05:00 PM - 06:00 PM</option>
           </select>
         </div>
       </div>
@@ -451,45 +621,55 @@
     </form>
   </section>
 
-  <!-- फोटो लुकबुक -->
+  <!-- लुकबुक गैलरी -->
   <section id="lookbook-section">
     <div class="section-header">
+      <span class="section-tag">Master Craftsmanship • Since Generations</span>
       <h3>Real Transformations & Perm Looks</h3>
-      <p style="color:#94a3b8; font-size:13px;">हमारे द्वारा किए गए कर्ली हेयर, ग्रूमिंग और बियर्ड स्टाइल</p>
+      <p style="color:#94a3b8; font-size:13px;">परंपरागत उस्तरे की धार से लेकर आज के ट्रेंडी कर्ली हेयर और फेड लुक</p>
     </div>
 
     <div class="photo-grid">
       <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&auto=format&fit=crop&q=80" alt="Curly Perm">
+        <img src="curly-style1.jpg" alt="Curly Perm & Drop Fade" onerror="this.src='https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600'">
         <div class="photo-info">
+          <span class="photo-badge badge-gold">Trending Style</span>
           <h4>Curly Perm & Drop Fade</h4>
-          <p>परफेक्ट कर्ली बाउंस और क्लीन स्किन फेड</p>
+          <p>प्रीमियम कर्ली हेयर पर्म और क्लीन लुक</p>
         </div>
       </div>
 
       <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&auto=format&fit=crop&q=80" alt="Textured Perm">
+        <img src="curly-style2.jpg" alt="Textured Perm & Shape-up" onerror="this.src='https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600'">
         <div class="photo-info">
+          <span class="photo-badge badge-blue">Most Popular</span>
           <h4>Textured Perm & Shape-up</h4>
-          <p>शार्प बियर्ड लाइनिंग और वॉल्यूम कर्ल</p>
+          <p>लॉन्ग लास्टिंग कर्ल्स विथ फिनिशिंग</p>
         </div>
       </div>
 
       <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&auto=format&fit=crop&q=80" alt="Classic Grooming">
+        <img src="curly-style3.jpg" alt="Classic Perm & Beard Blend" onerror="this.src='https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600'">
         <div class="photo-info">
+          <span class="photo-badge badge-green">Fresh Grooming</span>
           <h4>Classic Perm & Beard Blend</h4>
-          <p>सटीक बियर्ड कट और डी-टैन फ्रेशनेस</p>
+          <p>सटीक बियर्ड कट और बियर्ड ट्रिमिंग</p>
         </div>
       </div>
+    </div>
+
+    <div class="insta-footer-banner">
+      <a href="https://instagram.com/priti_jents_parlor" target="_blank" class="insta-footer-btn">
+        <i class="fab fa-instagram"></i> इंस्टाग्राम पर सभी रील्स और फ़ोटोज़ देखें (@priti_jents_parlor)
+      </a>
     </div>
   </section>
 
   <!-- रिव्यू सेक्शन -->
   <section id="reviews-section" class="review-box">
     <div style="text-align: center; margin-bottom: 20px;">
-      <h3 style="font-size: 20px; color: #f8fafc;">ग्राहक समीक्षा व रेटिंग</h3>
-      <p style="font-size: 13px; color: #94a3b8;">आपको हमारा काम कैसा लगा? अपना अनुभव यहाँ शेयर करें!</p>
+      <h3 style="font-size: 20px; color: #f8fafc;">ग्राहक समीक्षा व अपनी फोटो शेयर करें</h3>
+      <p style="font-size: 13px; color: #94a3b8;">काम कराने के बाद अपना नया लुक और अनुभव यहाँ फोटो के साथ शेयर करें!</p>
     </div>
 
     <div style="background: #090d16; padding: 18px; border-radius: 10px; border: 1px solid #243352;">
@@ -512,13 +692,18 @@
         <textarea id="revComment" rows="3" placeholder="हेयरकट, फेशियल या सर्विस का अनुभव..."></textarea>
       </div>
 
+      <div class="form-group">
+        <label for="revPhoto"><i class="fa fa-camera" style="color: #38bdf8;"></i> अपनी हेयरकट / स्टाइल की फोटो अपलोड करें (वैकल्पिक):</label>
+        <input type="file" id="revPhoto" accept="image/*" class="photo-upload-input">
+      </div>
+
       <button type="button" class="review-submit-btn" onclick="submitUserReview()">
-        <i class="fa fa-paper-plane"></i> रिव्यू सबमिट करें
+        <i class="fa fa-paper-plane"></i> रिव्यू व फोटो सबमिट करें
       </button>
     </div>
 
     <div style="margin-top: 25px;" id="reviewsDisplayArea">
-      <h4 style="font-size: 15px; color: #f59e0b; margin-bottom: 10px;">ग्राहकों की समीक्षाएं:</h4>
+      <h4 style="font-size: 15px; color: #f59e0b; margin-bottom: 10px;">ग्राहकों की समीक्षाएं व तस्वीरें:</h4>
       <div class="user-review-item">
         <div style="display:flex; justify-content:space-between;">
           <span class="user-review-name">राहुल कुमार</span>
@@ -531,14 +716,64 @@
 
 </div>
 
+<!-- लाइन-दर-लाइन पता + गूगल मैप लिंक वाला फ़ूटर -->
 <footer>
-  <p>© 2026 Priti Jeans Parlor. All Rights Reserved. | Mokama, Bihar</p>
+  <div class="address-card">
+    <h4><i class="fa fa-map-marker-alt"></i> दुकान का पता (Our Address)</h4>
+    
+    <div class="address-line">
+      <span class="addr-label">स्थान / मोहल्ला:</span>
+      <span class="addr-val">पचमहला (Pachmahla)</span>
+    </div>
+
+    <div class="address-line">
+      <span class="addr-label">शहर (City):</span>
+      <span class="addr-val">मोकामा (Mokama)</span>
+    </div>
+
+    <div class="address-line">
+      <span class="addr-label">ज़िला (District):</span>
+      <span class="addr-val">पटना (Patna)</span>
+    </div>
+
+    <div class="address-line">
+      <span class="addr-label">राज्य (State):</span>
+      <span class="addr-val">बिहार (Bihar)</span>
+    </div>
+
+    <div class="address-line">
+      <span class="addr-label">पिन कोड (Pin Code):</span>
+      <span class="addr-val">803303</span>
+    </div>
+
+    <div class="address-line">
+      <span class="addr-label">फ़ोन (Phone / WhatsApp):</span>
+      <span class="addr-val">+91 9570830413</span>
+    </div>
+
+    <!-- Google Map लिंक बटन -->
+    <a href="https://maps.app.goo.gl/xgg8F7sMU396mpKQ6?g_st=ac" target="_blank" class="map-btn-link">
+      <i class="fa fa-directions"></i> Google Maps पर दुकान का रास्ता देखें
+    </a>
+  </div>
+
+  <div class="copyright-text">
+    <p>© 2026 Priti Jeans Parlor | Pachmahla, Mokama, Patna, Bihar - 803303</p>
+    <p style="margin-top: 4px; font-size: 11px;">Style • Grooming • Confidence</p>
+  </div>
 </footer>
 
 <script>
-  document.getElementById('bookingDate').valueAsDate = new Date();
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  const todayStr = `${year}-${month}-${day}`;
 
-  // स्लॉट बुकिंग फॉर्म खोलना
+  const dateInput = document.getElementById('bookingDate');
+  dateInput.value = todayStr;
+  dateInput.min = todayStr;
+
   function openBooking() {
     const box = document.getElementById('booking-section');
     box.style.display = 'block';
@@ -546,7 +781,6 @@
     refreshTimeSlots();
   }
 
-  // कुल राशि कैलकुलेट करना
   function calcTotal() {
     const checkedBoxes = document.querySelectorAll('input[name="service"]:checked');
     let total = 0;
@@ -556,27 +790,34 @@
     document.getElementById('totalDisplay').innerText = '₹' + total;
   }
 
-  // एक स्लॉट = एक ही व्यक्ति (बुक स्लॉट को लॉक करना)
   function refreshTimeSlots() {
     const selectedDate = document.getElementById('bookingDate').value;
     const bookedSlots = JSON.parse(localStorage.getItem('booked_slots_' + selectedDate) || '[]');
     const select = document.getElementById('timeSlot');
 
+    const now = new Date();
+    const currentHour = now.getHours();
+
     for (let i = 0; i < select.options.length; i++) {
       const opt = select.options[i];
       if (!opt.value) continue;
 
-      if (bookedSlots.includes(opt.value)) {
+      const originalSlot = opt.value;
+      const endHour = parseInt(opt.getAttribute('data-end-hour'));
+
+      if (bookedSlots.includes(originalSlot)) {
         opt.disabled = true;
-        opt.innerText = opt.value + ' (पहले से बुक है ❌)';
+        opt.innerText = originalSlot + ' (पहले से बुक है ❌)';
+      } else if (selectedDate === todayStr && currentHour >= endHour) {
+        opt.disabled = true;
+        opt.innerText = originalSlot + ' (समय बीत चुका है ⌛)';
       } else {
         opt.disabled = false;
-        opt.innerText = opt.value;
+        opt.innerText = originalSlot;
       }
     }
   }
 
-  // बुकिंग प्रक्रिया: WhatsApp अलर्ट + रसीद प्रिंट + स्लॉट लॉक
   function processBooking() {
     const custName = document.getElementById('custName').value.trim();
     const custPhone = document.getElementById('custPhone').value.trim();
@@ -605,7 +846,6 @@
       `;
     });
 
-    // स्लॉट को उस तारीख के लिए लॉक कर दें
     let bookedSlots = JSON.parse(localStorage.getItem('booked_slots_' + bookingDate) || '[]');
     bookedSlots.push(timeSlot);
     localStorage.setItem('booked_slots_' + bookingDate, JSON.stringify(bookedSlots));
@@ -613,7 +853,6 @@
 
     const slipNo = 'SLIP-' + Math.floor(100000 + Math.random() * 900000);
 
-    // 1. WhatsApp पर मैसेज भेजना
     const waText = encodeURIComponent(
       `*🔔 नई स्लॉट बुकिंग (Priti Jeans Parlor)*\n\n` +
       `👤 *ग्राहक:* ${custName}\n` +
@@ -623,12 +862,13 @@
       `✂️ *सर्विस:* \n- ${bookedServices.join('\n- ')}\n\n` +
       `💰 *कुल बिल:* ₹${grandTotal}\n` +
       `📍 *भुगतान:* दुकान पर काउंटर देय\n` +
+      `🏢 *पता:* पचमहला, मोकामा, पटना, बिहार (803303)\n` +
+      `🗺️ *मैप लोकेशन:* https://maps.app.goo.gl/xgg8F7sMU396mpKQ6?g_st=ac\n` +
       `🧾 *स्लिप नं:* ${slipNo}`
     );
     const waURL = `https://wa.me/919570830413?text=${waText}`;
 
-    // 2. ग्राहक के लिए पक्की रसीद खोलना
-    const printWindow = window.open('', '_blank', 'width=520,height=680');
+    const printWindow = window.open('', '_blank', 'width=520,height=720');
     printWindow.document.write(`
       <!DOCTYPE html>
       <html>
@@ -638,20 +878,22 @@
           body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #0f172a; padding: 25px; max-width: 440px; margin: auto; }
           .receipt-head { text-align: center; border-bottom: 2px solid #0f172a; padding-bottom: 8px; }
           .receipt-head h2 { margin: 0; font-size: 20px; }
-          .receipt-head p { margin: 3px 0 0 0; font-size: 12px; color: #475569; }
+          .receipt-head p { margin: 2px 0 0 0; font-size: 11px; color: #475569; }
           .slip-badge { display: inline-block; background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 4px; font-weight: bold; font-size: 11px; margin-top: 5px; }
           .meta-table { width: 100%; margin-top: 12px; font-size: 12px; }
           .table-items { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 13px; }
           .table-items th { border-bottom: 1.5px solid #0f172a; padding: 6px 0; text-align: left; }
           .grand-total-row td { border-top: 2px solid #0f172a; padding: 8px 0; font-size: 16px; font-weight: bold; }
           .status-box { margin-top: 16px; border: 1px dashed #d97706; background: #fffbeb; padding: 10px; border-radius: 6px; font-size: 13px; }
-          .foot-tag { text-align: center; font-size: 11px; color: #64748b; margin-top: 25px; border-top: 1px dotted #cbd5e1; padding-top: 8px; }
+          .addr-box { margin-top: 10px; border-top: 1px dotted #cbd5e1; padding-top: 8px; font-size: 11px; color: #475569; }
+          .map-link-print { display: inline-block; margin-top: 6px; color: #0284c7; text-decoration: none; font-size: 11px; font-weight: bold; }
+          .foot-tag { text-align: center; font-size: 11px; color: #64748b; margin-top: 20px; border-top: 1px dotted #cbd5e1; padding-top: 8px; }
         </style>
       </head>
       <body>
         <div class="receipt-head">
           <h2>Priti Jeans Parlor</h2>
-          <p>Call: +91 9570830413 | Mokama, Bihar</p>
+          <p>पचमहला, मोकामा, पटना, बिहार - 803303 | Call: +91 9570830413</p>
           <div class="slip-badge">स्लॉट बुकिंग स्लिप (${slipNo})</div>
         </div>
 
@@ -674,15 +916,20 @@
         </table>
 
         <div class="status-box">
-          <div style="color: #b45309; font-weight: bold; font-size: 14px;">● भुगतान स्थिति: पार्लर काउंटर पर देय (Pay at Counter)</div>
-          <div style="margin-top: 4px; color: #475569; font-size: 12px;">यह अग्रिम स्लॉट बुकिंग है। भुगतान सेवा लेने के बाद काउंटर पर कैश या UPI से करें।</div>
-          <div style="margin-top: 6px; font-weight: bold; color: #dc2626; font-size: 14px;">देय राशि: ₹${grandTotal}</div>
+          <div style="color: #b45309; font-weight: bold; font-size: 13px;">● भुगतान स्थिति: पार्लर काउंटर पर देय (Pay at Counter)</div>
+          <div style="margin-top: 4px; color: #475569; font-size: 11px;">यह अग्रिम स्लॉट बुकिंग है। भुगतान सेवा लेने के बाद काउंटर पर कैश या UPI से करें।</div>
+          <div style="margin-top: 5px; font-weight: bold; color: #dc2626; font-size: 14px;">देय राशि: ₹${grandTotal}</div>
         </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 25px;">
-          <div style="border: 2px dashed #0284c7; border-radius: 50%; width: 100px; height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; transform: rotate(-5deg); color: #0284c7; text-align: center;">
-            <span style="font-size: 8px; font-weight: bold;">PRITI JEANS PARLOR</span>
-            <span style="font-size: 13px; font-weight: 900; margin: 2px 0;">SLOT BOOKED</span>
+        <div class="addr-box">
+          <strong>दुकान का पता:</strong> पचमहला, मोकामा, ज़िला - पटना, बिहार (803303)<br>
+          <a href="https://maps.app.goo.gl/xgg8F7sMU396mpKQ6?g_st=ac" class="map-link-print">📍 Google Maps पर लोकेशन खोलें</a>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 20px;">
+          <div style="border: 2px dashed #0284c7; border-radius: 50%; width: 95px; height: 95px; display: flex; flex-direction: column; align-items: center; justify-content: center; transform: rotate(-5deg); color: #0284c7; text-align: center;">
+            <span style="font-size: 7px; font-weight: bold;">PRITI JEANS PARLOR</span>
+            <span style="font-size: 12px; font-weight: 900; margin: 2px 0;">SLOT BOOKED</span>
             <span style="font-size: 7px;">MOKAMA</span>
           </div>
 
@@ -703,11 +950,9 @@
     `);
     printWindow.document.close();
 
-    // WhatsApp अलर्ट के लिए रीडायरेक्ट
     window.open(waURL, '_blank');
   }
 
-  // रेटिंग स्टार
   let selectedRatingStars = 5;
   const stars = document.querySelectorAll('#starContainer i');
   stars.forEach(star => {
@@ -724,28 +969,48 @@
   });
 
   function submitUserReview() {
-    const name = document.getElementById('revName').value.trim() || 'अतिथि';
+    const name = document.getElementById('revName').value.trim() || 'अतिथि ग्राहक';
     const comment = document.getElementById('revComment').value.trim();
+    const fileInput = document.getElementById('revPhoto');
 
     if (!comment) {
-      alert('कृपया अपना रिव्यू लिखें!');
+      alert('कृपया अपना रिव्यू/अनुभव लिखें!');
       return;
     }
 
     let starStr = '★'.repeat(selectedRatingStars) + '☆'.repeat(5 - selectedRatingStars);
+
+    if (fileInput.files && fileInput.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        addReviewCard(name, starStr, comment, e.target.result);
+      };
+      reader.readAsDataURL(fileInput.files[0]);
+    } else {
+      addReviewCard(name, starStr, comment, null);
+    }
+  }
+
+  function addReviewCard(name, starStr, comment, imgSrc) {
     const reviewItem = document.createElement('div');
     reviewItem.className = 'user-review-item';
+    
+    let photoHtml = imgSrc ? `<img src="${imgSrc}" class="user-review-img" alt="Customer Haircut">` : '';
+
     reviewItem.innerHTML = `
       <div style="display:flex; justify-content:space-between;">
         <span class="user-review-name">${name}</span>
         <span class="user-review-stars">${starStr}</span>
       </div>
       <p class="user-review-text">${comment}</p>
+      ${photoHtml}
     `;
 
     document.getElementById('reviewsDisplayArea').prepend(reviewItem);
+    document.getElementById('revName').value = '';
     document.getElementById('revComment').value = '';
-    alert('धन्यवाद! आपका रिव्यू जुड़ गया है।');
+    document.getElementById('revPhoto').value = '';
+    alert('धन्यवाद! आपका रिव्यू और फोटो सफलतापूर्वक जुड़ गया है।');
   }
 </script>
 
